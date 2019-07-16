@@ -40,15 +40,13 @@ export class PostService {
         return post;
     }
 
-    LoveIts(index: number, loveNum: number) {
-      const unPost = this.getPostById(index);
-      unPost.loveIts = loveNum;
+    LoveIts(index: number, loveNum: number ) {
+      this.post[index].loveIts = loveNum;
       this.emitPostSubject();
     }
 
     dontLoveIts(index: number, dontloveNum: number) {
-      const unPost = this.getPostById(index);
-      unPost.loveIts = dontloveNum;
+      this.post[index].loveIts = dontloveNum;
       this.emitPostSubject();
     }
 

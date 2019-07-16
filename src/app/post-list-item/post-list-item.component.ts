@@ -23,12 +23,12 @@ export class PostListItemComponent implements OnInit {
   }
 
   onLoveIts() {
-    this.postService.LoveIts(this.id, this.PostLoveIts += 1);
+    this.postService.LoveIts(this.indexOfPost, this.PostLoveIts += 1);
     console.log(this.PostLoveIts);
   }
 
   onDontLoveIts() {
-    this.postService.dontLoveIts(this.id, this.PostLoveIts -= 1);
+    this.postService.dontLoveIts(this.indexOfPost, this.PostLoveIts -= 1);
     console.log(this.PostLoveIts);
   }
 
