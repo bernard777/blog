@@ -53,8 +53,7 @@ export class PostService {
     }
 
     deletePost(index: number) {
-        const unPost = this.getPostById(index);
-        this.post.splice( (unPost.id - 1) , 1);
+        this.post.splice(index , 1);
         this.emitPostSubject();
     }
 

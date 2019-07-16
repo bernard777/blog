@@ -13,6 +13,7 @@ export class PostListItemComponent implements OnInit {
   @Input() content: string;
   @Input() createAt: Date;
   @Input() PostLoveIts: number;
+  @Input() indexOfPost: number;
 
 
   constructor(private postService: PostService) {
@@ -40,7 +41,7 @@ export class PostListItemComponent implements OnInit {
   }
 
   onDelete() {
-    this.postService.deletePost(this.id);
+    this.postService.deletePost(this.indexOfPost);
   }
 
 }
