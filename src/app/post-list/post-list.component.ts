@@ -1,5 +1,7 @@
+import { PostService } from './../services/post.service';
 import { PostListItemComponent } from './../post-list-item/post-list-item.component';
 import { Component, OnInit, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-post-list',
@@ -8,29 +10,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostListComponent implements OnInit {
 
-  post = [
-    {
-     title: 'Mon premier post',
-     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias Lorem ipsum dolor sit amet consectetur adipisi',
-     loveIts: 0,
-     created_at: new Date()
-    },
-    {
-     title: 'Mon deuxieme post',
-     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias Lorem ipsum dolor sit amet consectetur adipisi',
-     loveIts: 0,
-     created_at: new Date()
-    },
-    {
-     title: 'Encore un post',
-     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias Lorem ipsum dolor sit amet consectetur adipisi',
-     loveIts: 0,
-     created_at: new Date()
-    }
- ];
+  posts: any[];
+  postSubscription: Subscription;
 
-  constructor() { }
+  constructor( private postService: PostService ) { }
 
   ngOnInit() {
+    this.postSubscription = this.postService.postSubject.subscribe(
+      (post: any[]) => {
+        this.posts = post;
+      }
+    );
+    this.postService.emitPostSubject();
+  }
+
+  onSave() {
+    this.postService.savePostToServer();
+  }
+
+  onFetch() {
+    this.postService.getPostFromServer();
   }
 }

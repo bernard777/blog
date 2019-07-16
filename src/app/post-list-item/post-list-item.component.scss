@@ -2,16 +2,18 @@ button{
     margin-right: 5px;
 }
 
-.aligne{
-    display: inline;
-}
-
-h4{
-    text-align: right; 
-    position: inherit;
+h4 {
+    float: right;
 }
 
 h3{
+    display:  inline;
     font-size: 18pt;
-    font-weight: bold
+    font-weight: bold;
 }
+
+#content {
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
